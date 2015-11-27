@@ -31,7 +31,7 @@ Let's say you author several markdown documents, each which conveniently link to
     See [Document A](Document A.md) for more details.
     ```
 
-Problematically, Jekyll won't convert these to in the produced HTML that you might specify in the permalink.
+Problematically, Jekyll/Kramdown won't convert these to in the produced HTML that you might specify in the permalink.
 
 * `./document-a.html`
 
@@ -45,7 +45,20 @@ Problematically, Jekyll won't convert these to in the produced HTML that you mig
     See <a href="Document A.md">Document A</a> for more details.
     ```
 
-This repo is a basic workaround for this issue.
+This Jekyll plugin is a basic workaround for this issue.
+In the above example, it will instead output the following HTML documents.
+
+* `./document-a.html`
+
+    ```html
+    See <a href="document-b.md">Document B</a> for more details.
+    ```
+
+* `./document-b.html`
+
+    ```markdown
+    See <a href="document-b.md">Document A</a> for more details.
+    ```
 
 # Expectations
 
