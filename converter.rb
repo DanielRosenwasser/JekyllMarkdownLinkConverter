@@ -33,7 +33,7 @@ end
 # is that we need to be in the Jekyll::Converters::Markdown
 # module to be a valid markdown converter.
 module Jekyll
-    class Converters::Markdown::MarkdownLinkDoctor < Converter
+    class Converters::Markdown::JekyllMarkdownLinkConverter < Converter
         safe true
 
         # Match markdown files.
