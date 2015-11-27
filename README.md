@@ -51,13 +51,13 @@ In the above example, it will instead output the following HTML documents.
 * `./document-a.html`
 
     ```html
-    See <a href="document-b.md">Document B</a> for more details.
+    See <a href="document-b.html">Document B</a> for more details.
     ```
 
 * `./document-b.html`
 
     ```markdown
-    See <a href="document-b.md">Document A</a> for more details.
+    See <a href="document-b.html">Document A</a> for more details.
     ```
 
 # Expectations
