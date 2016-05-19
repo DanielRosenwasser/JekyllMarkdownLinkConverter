@@ -65,4 +65,4 @@ In the above example, it will instead output the following HTML documents.
 Each markdown document needs to be permalinked to its current filename, after its name has been
 
 1. Lowercased.
-2. Had consecutive whitespace replaced with dashes.
+2. Had consecutive whitespace and individual dots replaced with hyphens.
