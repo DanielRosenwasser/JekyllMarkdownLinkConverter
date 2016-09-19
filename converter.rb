@@ -17,7 +17,7 @@ module Kramdown
 
                     # Remove the 'md', replace whitespace with dashes, switch the extension to html
                     dir, md_base = File.split(href)
-                    html_base = md_base.chomp('.md').gsub(/\s+|\./, '-').downcase + '.html'
+                    html_base = md_base.chomp('.md').gsub(/\s+|\.|'/, '-').downcase + '.html'
                     attr['href'] = File.join(dir, html_base)
 
                     self.format_as_span_html(el.type, attr, self.inner(el, indent))
