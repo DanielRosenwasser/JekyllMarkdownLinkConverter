@@ -8,7 +8,7 @@ module Kramdown
         # Fixes relative markdown links to point to their dash-separated, lowercased html outputs
         class MarkdownLinkAmendedHtml < Html
             def convert_a(el, indent)
-                href = el.attr['href']
+                href, anchor =  el.attr['href'].split('#', 2);
                 # Ensure that the link is relative to the site (doesn't start with "protocol://")
                 # and that it links to a markdown file.
                 if not /^\w+?:\/\// =~ href and href.end_with?('.md')
@@ -18,7 +18,11 @@ module Kramdown
                     # Remove the 'md', replace whitespace with dashes, switch the extension to html
                     dir, md_base = File.split(href)
                     html_base = md_base.chomp('.md').gsub(/\s+|\.|'/, '-').downcase + '.html'
-                    attr['href'] = File.join(dir, html_base)
+                    result = File.join(dir, html_base);
+                    if not anchor.to_s == ''
+                       result = result + '#' + anchor;
+                    end
+                    attr['href'] = result;
 
                     self.format_as_span_html(el.type, attr, self.inner(el, indent))
                 else
