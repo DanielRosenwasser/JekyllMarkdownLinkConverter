@@ -18,6 +18,7 @@ module Kramdown
                     # Remove the 'md', replace whitespace with dashes, switch the extension to html
                     dir, md_base = File.split(href)
                     html_base = md_base.chomp('.md').gsub(/\s+|\.|'/, '-').downcase + '.html'
+                    dir = dir.gsub(/\s+|'/, '-')
                     result = File.join(dir, html_base);
                     if not anchor.to_s == ''
                        result = result + '#' + anchor;
