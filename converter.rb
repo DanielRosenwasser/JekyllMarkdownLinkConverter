@@ -16,7 +16,7 @@ module Kramdown
                     attr = el.attr.dup
 
                     # Remove the 'md', replace whitespace with dashes, switch the extension to html
-                    dir, md_base = File.split(href)
+                    dir, md_base = File.split(href.gsub(/%20/, " "));
                     html_base = md_base.chomp('.md').gsub(/\s+|\.|'/, '-').downcase + '.html'
                     dir = dir.gsub(/\s+|'/, '-')
                     result = File.join(dir, html_base);
