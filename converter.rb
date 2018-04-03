@@ -13,10 +13,10 @@ module Kramdown
                 # and that it links to a markdown file.
                 if not /^\w+?:\/\// =~ href and href.end_with?('.md')
                     # Duplicate the attributes to avoid modifying the tree.
-                    attr = el.attr.dup
+                    attr = el.attr.dup;
 
                     # Remove the 'md', replace whitespace with dashes, switch the extension to html
-                    dir, md_base = File.split(href.gsub(/%20/, " "));
+                     dir, md_base = File.split(URI.unescape(href));
                     html_base = md_base.chomp('.md').gsub(/\s+|\.|'/, '-').downcase + '.html'
                     dir = dir.gsub(/\s+|'/, '-')
                     result = File.join(dir, html_base);
