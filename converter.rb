@@ -8,22 +8,22 @@ module Kramdown
         # Fixes relative markdown links to point to their dash-separated, lowercased html outputs
         class MarkdownLinkAmendedHtml < Html
             def convert_a(el, indent)
-                href, anchor =  el.attr['href'].split('#', 2);
+                href, anchor =  el.attr['href'].split('#', 2)
                 # Ensure that the link is relative to the site (doesn't start with "protocol://")
                 # and that it links to a markdown file.
                 if not /^\w+?:\/\// =~ href and href.end_with?('.md')
                     # Duplicate the attributes to avoid modifying the tree.
-                    attr = el.attr.dup;
+                    attr = el.attr.dup
 
                     # Remove the 'md', replace whitespace with dashes, switch the extension to html
-                     dir, md_base = File.split(URI.unescape(href));
+                    dir, md_base = File.split(URI.unescape(href))
                     html_base = md_base.chomp('.md').gsub(/\s+|\.|'/, '-').downcase + '.html'
                     dir = dir.gsub(/\s+|'/, '-')
-                    result = File.join(dir, html_base);
+                    result = File.join(dir, html_base)
                     if not anchor.to_s == ''
-                       result = result + '#' + anchor;
+                       result = result + '#' + anchor
                     end
-                    attr['href'] = result;
+                    attr['href'] = result
 
                     self.format_as_span_html(el.type, attr, self.inner(el, indent))
                 else
@@ -55,7 +55,7 @@ module Jekyll
             kramdown_config = symbolize_keys(@config['kramdown'])
             doc = Kramdown::Document.new(content, kramdown_config)
             html = doc.to_markdown_link_amended_html
-            return html;
+            return html
         end
     end
 end
